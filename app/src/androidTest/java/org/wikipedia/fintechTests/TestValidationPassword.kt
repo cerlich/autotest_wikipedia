@@ -9,7 +9,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.R
 import org.wikipedia.fintechTests.screens.CreateAccountScreen
-import org.wikipedia.fintechTests.screens.SettingScreen
+import org.wikipedia.fintechTests.screens.MainScreen
 import org.wikipedia.main.MainActivity
 
 class TestValidationPassword {
@@ -25,13 +25,21 @@ class TestValidationPassword {
 
     @Test
     fun testFifthCase(){
-        val settings = SettingScreen()
+        val mainScreen = MainScreen()
         val account = CreateAccountScreen()
-        with(settings){
+
+        with(mainScreen){
             clickMenu()
             clickLogIn()
         }
+
         with(account){
+            typeTextToUsernameField("cerlich")
+            typeTextToPasswordField("pass")
+            typeTextToPasswordRepeatField("pass")
+            clickNext()
+            checkColorPassword()
+            checkError()
         }
     }
 }

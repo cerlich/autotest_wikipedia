@@ -7,10 +7,12 @@ import androidx.test.espresso.intent.matcher.IntentMatchers.anyIntent
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasData
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import org.hamcrest.core.AnyOf.anyOf
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.R
+import org.wikipedia.fintechTests.screens.MainScreen
 import org.wikipedia.fintechTests.screens.SettingScreen
 import org.wikipedia.main.MainActivity
 
@@ -27,12 +29,19 @@ class TestBrowser {
     @Test
     fun testThirdCase(){
         val settingScreen = SettingScreen()
-        with(settingScreen) {
+        val mainScreen = MainScreen()
+
+        with(mainScreen) {
             clickMenu()
             clickSettings()
-            scroll(R.id.recycler_view)
+        }
+
+        with(settingScreen) {
+            scrollSettings()
             clickPrivacyPolicy()
         }
-        anyIntent().matches(hasData(Uri.parse("www.google.com")))
+
+        anyIntent().matches(anyOf( hasData(Uri.parse("https://meta.m.wikimedia.org/wiki/Privacy_policy")),
+                        hasData(Uri.parse("www.google.com"))))
     }
 }

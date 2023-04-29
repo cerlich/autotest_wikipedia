@@ -9,6 +9,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.R
 import org.wikipedia.fintechTests.screens.AboutWikiScreen
+import org.wikipedia.fintechTests.screens.MainScreen
 import org.wikipedia.fintechTests.screens.SettingScreen
 import org.wikipedia.main.MainActivity
 
@@ -26,14 +27,20 @@ class TestAboutWiki {
     @Test
     fun testSecondCase(){
         val settingScreen = SettingScreen()
-        val about = AboutWikiScreen()
-        with(settingScreen) {
+        val aboutWiki = AboutWikiScreen()
+        val mainScreen = MainScreen()
+
+        with(mainScreen) {
             clickMenu()
             clickSettings()
-            scroll(R.id.recycler_view)
+        }
+
+        with(settingScreen) {
+            scrollSettings()
             clickAboutWiki()
         }
-        with(about){
+
+        with(aboutWiki){
             isDisplayedAuthors()
             isDisplayedLicense()
             isDisplayedTranslators()

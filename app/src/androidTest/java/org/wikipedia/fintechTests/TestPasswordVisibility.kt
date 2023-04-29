@@ -9,6 +9,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.R
 import org.wikipedia.fintechTests.screens.CreateAccountScreen
+import org.wikipedia.fintechTests.screens.MainScreen
 import org.wikipedia.fintechTests.screens.SettingScreen
 import org.wikipedia.main.MainActivity
 
@@ -25,10 +26,12 @@ class TestPasswordVisibility {
 
     @Test
     fun testFourthCase(){
-        val settingScreen = SettingScreen()
+        val mainScreen = MainScreen()
         val account = CreateAccountScreen()
-        settingScreen.clickMenu()
-        settingScreen.clickLogIn()
+
+        mainScreen.clickMenu()
+        mainScreen.clickLogIn()
+
         with(account){
             typeTextToPasswordField("myPassword")
             clickHidePassword()

@@ -17,17 +17,23 @@ class AboutWikiScreen {
     private val licenseBlock = withId(R.id.about_app_license)
 
     fun isDisplayedAuthors(){
-        onView(authorsHeading).check(matches(isDisplayed()))
-        onView(authorsBlock).check(matches(isDisplayed()))
+        onView(authorsHeading)
+                .check(matches(isDisplayed()))
+        onView(authorsBlock)
+                .check(matches(isDisplayed()))
     }
 
     fun isDisplayedTranslators(){
-        onView(translatorHeading).check(matches(isDisplayed()))
-        onView(translatorsBlock).check(matches(isDisplayed()))
+        onView(translatorHeading)
+                .check(matches(isDisplayed()))
+        onView(translatorsBlock)
+                .check(matches(isDisplayed()))
     }
 
     fun isDisplayedLicense(){
-        onView(licenseHeading).check(matches(isDisplayed()))
-        onView(licenseBlock).check(matches(isDisplayed()))
+        onView(licenseHeading)
+                .check(matches(isDisplayed()))
+        onView(licenseBlock)
+                .check(matches(isDisplayed()))
     }
 }

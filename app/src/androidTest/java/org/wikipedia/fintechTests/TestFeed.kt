@@ -9,6 +9,8 @@ import org.junit.Before
 import org.wikipedia.main.MainActivity
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import org.wikipedia.R
+import org.wikipedia.fintechTests.screens.CastomizeFeedScreen
+import org.wikipedia.fintechTests.screens.MainScreen
 import org.wikipedia.fintechTests.screens.SettingScreen
 
 class TestFeed {
@@ -25,12 +27,16 @@ class TestFeed {
         @Test
         fun testFirstCase() {
             val settingScreen = SettingScreen()
-            with(settingScreen) {
+            val mainScreen = MainScreen()
+            val feed = CastomizeFeedScreen()
+
+            with(mainScreen) {
                 clickMenu()
                 clickSettings()
-                clickCastomFeed()
-                checkAllCheckboxes()
             }
+
+            settingScreen.clickCastomFeed()
+            feed.checkAllCheckboxes()
         }
 
 }
